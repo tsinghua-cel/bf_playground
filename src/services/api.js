@@ -60,3 +60,15 @@ export const downloadProject = async (projectId) => {
         throw error;
     }
 };
+
+export const getBlogs = async (page = 1, pageSize = 10) => {
+    try {
+        const response = await apiClient.get('/blogs', {
+            params: { page, pageSize },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+        throw error;
+    }
+}

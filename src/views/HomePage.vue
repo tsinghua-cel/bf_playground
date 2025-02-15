@@ -1,142 +1,124 @@
 <template>
   <div>
-    <h1 class="text-3xl font-bold mb-8">BunnyFinder Playground</h1>
+    <!-- Section 1: Large Background with Text Description -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to BunnyFinder</h1>
+        <p class="hero-description"></p>
+      </div>
+    </section>
 
-    <div class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Play History</h2>
-      <ProjectList :columns="list1Columns" :items="list1Items" />
-      <Pagination
-          :current-page="currentPage1"
-          :total-pages="totalPages1"
-          :items-per-page="itemsPerPage"
-          :total-items="totalItems1"
-          @prev="prevPage1"
-          @next="nextPage1"
-      />
-    </div>
+    <!-- Section 2: Four Small Images with Text Descriptions -->
+    <section class="features-section">
+      <div class="feature" v-for="feature in features" :key="feature.id">
+        <img :src="feature.image" :alt="feature.title" class="feature-image" />
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+      </div>
+    </section>
 
-    <div>
-      <h2 class="text-2xl font-semibold mb-4">Comprehensive Lost Ratio Analysis</h2>
-      <TopStrategyList :columns="list2Columns" :items="list2Items" />
-      <Pagination
-          :current-page="currentPage2"
-          :total-pages="totalPages2"
-          :items-per-page="itemsPerPage"
-          :total-items="totalItems2"
-          @prev="prevPage2"
-          @next="nextPage2"
-      />
-    </div>
-
-    <div v-if="isLoading" class="loading-overlay">
-      <div class="loading-icon"></div>
-    </div>
+    <!-- Section 3: Contact Information -->
+    <section id="/#about" class="contact-section">
+      <h2 class="contact-title">Contact Us</h2>
+      <p class="contact-info">Email: contact@example.com</p>
+      <p class="contact-info">Phone: +123 456 7890</p>
+      <p class="contact-info">Address: 123 Main Street, Anytown, USA</p>
+    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import List from '../components/List.vue'
-import TopStrategyList  from "../components/TopStrategyList.vue";
-import ProjectList from '../components/ProjectList.vue'
-import Pagination from '../components/Pagination.vue'
-import { getProjectList , getTopStrategies } from '../services/api'
+import { ref } from 'vue'
 
-const router = useRouter()
-
-const list1Columns = ['Project ID', 'Total Slot', 'Start Time', 'End Time']
-const list2Columns = ['Strategy ID', 'Honest Lose', 'Malicious Lose', 'Ratio', 'Project ID', 'Strategy Content']
-
-const list1Items = ref([])
-const list2Items = ref([])
-
-const currentPage1 = ref(1)
-const currentPage2 = ref(1)
-const totalPages1 = ref(1)
-const totalPages2 = ref(1)
-const itemsPerPage = 4
-const totalItems1 = ref(0)
-const totalItems2 = ref(0)
-const isLoading = ref(false)
-
-const loadList1 = async () => {
-  isLoading.value = true
-  const response = await getProjectList(currentPage1.value, itemsPerPage)
-  list1Items.value = response.data
-  totalItems1.value = response.total
-  totalPages1.value = Math.ceil(response.total / itemsPerPage)
-  isLoading.value = false
-}
-
-const loadList2 = async () => {
-  isLoading.value = true
-  const response = await getTopStrategies(currentPage2.value, itemsPerPage)
-  list2Items.value = response.data
-  totalItems2.value = response.total
-  totalPages2.value = Math.ceil(response.total / itemsPerPage)
-  isLoading.value = false
-}
-
-const prevPage1 = () => {
-  if (currentPage1.value > 1) {
-    currentPage1.value--
-    loadList1()
-  }
-}
-
-const nextPage1 = () => {
-  if (currentPage1.value < totalPages1.value) {
-    currentPage1.value++
-    loadList1()
-  }
-}
-
-const prevPage2 = () => {
-  if (currentPage2.value > 1) {
-    currentPage2.value--
-    loadList2()
-  }
-}
-
-const nextPage2 = () => {
-  if (currentPage2.value < totalPages2.value) {
-    currentPage2.value++
-    loadList2()
-  }
-}
-
-onMounted(() => {
-  loadList1()
-  loadList2()
-})
+const features = ref([
+  { id: 1, image: '@/assets/feature1.jpg', title: 'Feature 1', description: 'Description for feature 1' },
+  { id: 2, image: '@/assets/feature2.jpg', title: 'Feature 2', description: 'Description for feature 2' },
+  { id: 3, image: '@/assets/feature3.jpg', title: 'Feature 3', description: 'Description for feature 3' },
+  { id: 4, image: '@/assets/feature4.jpg', title: 'Feature 4', description: 'Description for feature 4' },
+])
 </script>
 
 <style scoped>
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Darker background for better contrast */
+/* Section 1: Large Background with Text Description */
+.hero-section {
+  background: url('@/assets/hero-background.jpg') no-repeat center center;
+  background-size: cover;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  color: #ffffff;
+  text-align: center;
 }
 
-.loading-icon {
-  border: 8px solid rgba(255, 255, 255, 0.3); /* Lighter border */
-  border-top: 8px solid #ffffff; /* White color for the top border */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite; /* Faster spin */
+.hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+}
+
+/* Section 2: Four Small Images with Text Descriptions */
+.features-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.feature {
+  text-align: center;
+  max-width: 200px;
+}
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Section 3: Contact Information */
+.contact-section {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.contact-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.contact-info {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.contact-info::before {
+  content: '• ';
+  color: #343a40;
+  font-weight: bold;
 }
 </style>

@@ -1,7 +1,7 @@
 <!-- src/components/Footer.vue -->
 <template>
   <footer class="footer">
-    <p>&copy; 2024 Your Company. All rights reserved.</p>
+    <p>&copy; 2024 Tsinghua CryptoEconomics Lab. All rights reserved.</p>
   </footer>
 </template>
 

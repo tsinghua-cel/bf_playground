@@ -2,7 +2,7 @@
   <div v-if="isVisible" class="modal-overlay" @click="close">
     <div class="modal-content" @click.stop>
       <button class="copy-button" @click="copyContent">
-        <img src="https://w7.pngwing.com/pngs/592/864/png-transparent-computer-icons-icon-design-cut-copy-and-paste-taobao-clothing-promotional-copy-text-rectangle-emoticon-thumbnail.png" alt="Copy" class="copy-icon" />
+        <img src="/assets/copy-icon.png" alt="Copy" class="copy-icon" />
       </button>
       <div class="modal-body">
         <pre v-html="highlightedContent" class="line-wrap"></pre>

@@ -1,0 +1,160 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Background Gradient -->
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#18181b"/>
+            <stop offset="100%" stop-color="#27272a"/>
+        </linearGradient>
+
+        <!-- Text Gradient -->
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e4e4e7"/>
+            <stop offset="50%" stop-color="#d4d4d8"/>
+            <stop offset="100%" stop-color="#a1a1aa"/>
+        </linearGradient>
+
+        <!-- Bunny Gradient -->
+        <linearGradient id="bunnyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e4e4e7"/>
+            <stop offset="100%" stop-color="#d4d4d8"/>
+        </linearGradient>
+
+        <!-- Cheek Gradient -->
+        <radialGradient id="cheekGradient" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#f4f4f5" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#f4f4f5" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Glow Effect -->
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Circuit Pattern -->
+        <pattern id="circuitPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M0 25h50 M25 0v50" stroke="#71717a" stroke-width="0.5" opacity="0.08"/>
+        </pattern>
+    </defs>
+
+    <!-- Base Background -->
+    <rect width="800" height="300" fill="url(#bgGradient)"/>
+    <rect width="800" height="300" fill="url(#circuitPattern)"/>
+
+    <!-- Tech Background Elements -->
+    <g opacity="0.1">
+        <circle cx="180" cy="150" r="110" fill="none" stroke="#a1a1aa" stroke-width="0.5"/>
+        <circle cx="180" cy="150" r="90" fill="none" stroke="#a1a1aa" stroke-width="0.5"/>
+    </g>
+
+    <!-- Optimized Bunny Design -->
+    <g transform="translate(100,50)">
+        <!-- Main Head Shape -->
+        <path d="M85 100
+             C85 70, 155 70, 155 100
+             C155 140, 135 165, 120 165
+             C105 165, 85 140, 85 100"
+              fill="url(#bunnyGradient)"
+              filter="url(#glow)"/>
+
+        <!-- Left Ear -->
+        <path d="M100 95
+             C100 95, 85 45, 82 20
+             C80 10, 88 5, 93 12
+             C98 19, 105 60, 105 95
+             C105 98, 102 98, 100 95"
+              fill="url(#bunnyGradient)"
+              filter="url(#glow)"/>
+
+        <!-- Right Ear -->
+        <path d="M140 95
+             C140 95, 155 45, 158 20
+             C160 10, 152 5, 147 12
+             C142 19, 135 60, 135 95
+             C135 98, 138 98, 140 95"
+              fill="url(#bunnyGradient)"
+              filter="url(#glow)"/>
+
+        <!-- Cheeks -->
+        <circle cx="95" cy="115" r="15" fill="url(#cheekGradient)"/>
+        <circle cx="145" cy="115" r="15" fill="url(#cheekGradient)"/>
+
+        <!-- Eyes -->
+        <g transform="translate(0,2)">
+            <!-- Eye Whites -->
+            <ellipse cx="105" cy="105" rx="11" ry="13" fill="#ffffff"/>
+            <ellipse cx="135" cy="105" rx="11" ry="13" fill="#ffffff"/>
+
+            <!-- Eye Shine -->
+            <circle cx="108" cy="102" r="2.5" fill="#ffffff"/>
+            <circle cx="138" cy="102" r="2.5" fill="#ffffff"/>
+
+            <!-- Pupils -->
+            <ellipse cx="105" cy="106" rx="5.5" ry="6.5" fill="#27272a"/>
+            <ellipse cx="135" cy="106" rx="5.5" ry="6.5" fill="#27272a"/>
+        </g>
+
+        <!-- Nose -->
+        <path d="M117 120
+             C115 120, 113 122, 115 125
+             C117 128, 123 128, 125 125
+             C127 122, 125 120, 123 120
+             Z"
+              fill="#a1a1aa"/>
+
+        <!-- Tech Details -->
+        <g opacity="0.4">
+            <!-- Circuit Lines -->
+            <path d="M95 140 C105 145, 135 145, 145 140"
+                  fill="none" stroke="#a1a1aa" stroke-width="0.5"/>
+
+            <!-- Connection Points -->
+            <circle cx="95" cy="140" r="1" fill="#a1a1aa"/>
+            <circle cx="145" cy="140" r="1" fill="#a1a1aa"/>
+            <circle cx="120" cy="142" r="1" fill="#a1a1aa"/>
+        </g>
+    </g>
+
+    <!-- Typography Section -->
+    <g transform="translate(300, 150)">
+        <!-- BUNNY Text -->
+        <text x="0" y="20"
+              font-family="'Segoe UI', sans-serif"
+              font-size="64"
+              font-weight="800"
+              letter-spacing="4"
+              fill="url(#textGradient)"
+              style="filter: url(#glow)">
+            BUNNY
+        </text>
+
+        <!-- FINDER Text -->
+        <text x="80" y="70"
+              font-family="'Segoe UI', sans-serif"
+              font-size="64"
+              font-weight="800"
+              letter-spacing="2"
+              fill="#e4e4e7"
+              style="filter: url(#glow)">
+            FINDER
+        </text>
+
+        <!-- Decorative Lines -->
+        <line x1="0" y1="35" x2="250" y2="35" stroke="#71717a" stroke-width="0.5" opacity="0.5"/>
+        <line x1="80" y1="85" x2="330" y2="85" stroke="#71717a" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="0" cy="35" r="1.5" fill="#71717a" opacity="0.5"/>
+        <circle cx="250" cy="35" r="1.5" fill="#71717a" opacity="0.5"/>
+        <circle cx="80" cy="85" r="1.5" fill="#71717a" opacity="0.5"/>
+        <circle cx="330" cy="85" r="1.5" fill="#71717a" opacity="0.5"/>
+    </g>
+
+    <!-- Bottom Right Decoration -->
+    <g transform="translate(650, 200)" opacity="0.3">
+        <circle cx="0" cy="0" r="20" fill="none" stroke="#71717a" stroke-width="0.5"/>
+        <circle cx="0" cy="0" r="15" fill="none" stroke="#71717a" stroke-width="0.5"/>
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#71717a" stroke-width="0.5"/>
+    </g>
+</svg>
