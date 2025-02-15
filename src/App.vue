@@ -4,7 +4,10 @@
     <main class="container mx-auto px-4 py-8 flex-grow">
       <router-view></router-view>
     </main>
-    <Footer />
+    <footer class="footer">
+      <Footer />
+    </footer>
+
   </div>
 </template>
 

@@ -35,7 +35,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import List from '../components/List.vue'
 import TopStrategyList  from "../components/TopStrategyList.vue";
 import ProjectList from '../components/ProjectList.vue'
 import Pagination from '../components/Pagination.vue'

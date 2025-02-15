@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h1 class="text-3xl font-bold mb-8">Play Test Detail</h1>
+    <div class="mb-12">
+      <Dash />
+    </div>
 
     <div class="mb-12">
       <h2 class="text-2xl font-semibold mb-4">Strategy Reorg Analysis</h2>
-      <List :columns="list1Columns" :items="list1Items" />
+      <ReorgStrategyList :columns="list1Columns" :items="list1Items" />
       <Pagination
           :current-page="currentPage1"
           :total-pages="totalPages1"
@@ -17,33 +19,40 @@
 
     <div class="mb-12">
       <h2 class="text-2xl font-semibold mb-4">Honest Lost Rate Analysis</h2>
-      <List :columns="list2Columns" :items="list2Items" />
+      <HonestStrategyList :columns="list2Columns" :items="list2Items" />
     </div>
 
     <div class="mb-12">
       <h2 class="text-2xl font-semibold mb-4">Comprehensive Lost Ratio Analysis</h2>
-      <List :columns="list3Columns" :items="list3Items" />
+      <RatioStrategyList :columns="list3Columns" :items="list3Items" />
     </div>
 
     <button @click="handleDownload" :disabled="loading" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
       <span v-if="loading">Downloading...</span>
       <span v-else>Download</span>
     </button>
+
+    <div v-if="isLoading" class="loading-overlay">
+      <div class="loading-icon"></div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import List from '../components/List.vue'
+import {ref, onMounted} from 'vue'
+import {useRoute} from 'vue-router'
 import Pagination from '../components/Pagination.vue'
-import { getProjectDetail, downloadProject } from '../services/api'
+import Dash from '../components/Dash.vue'
+import {getProjectDetail, downloadProject} from '../services/api'
+import ReorgStrategyList from "../components/ReorgStrategyList.vue";
+import HonestStrategyList from "../components/HonestStrategyList.vue";
+import RatioStrategyList from "../components/RatioStrategyList.vue";
 
 const route = useRoute()
 
-const list1Columns = ['ID', 'Name', 'Email', 'Status']
-const list2Columns = ['ID', 'Product', 'Price', 'Stock']
-const list3Columns = ['ID', 'Category', 'Supplier', 'Rating']
+const list1Columns = ['Strategy ID', 'Reorg Count', 'Strategy Content']
+const list2Columns = ['Strategy ID', 'Honest Lose', 'Strategy Content']
+const list3Columns = ['Strategy ID', 'Honest Lose', 'Malicious Lose', 'Ratio', 'Strategy Content']
 
 let statItems = ref({})
 const list1Items = ref([])
@@ -57,24 +66,25 @@ const totalItems1 = ref(0)
 
 let projectDetail = ref({})
 const loading = ref(false)
+const isLoading = ref(false)
 
-const getDetail = async() => {
+const getDetail = async () => {
+  isLoading.value = true
   var response = await getProjectDetail(route.params.id)
   projectDetail = response.data
   await getStat()
   await loadList1()
   await loadList2()
   await loadList3()
+  isLoading.value = false
 }
 
-const getStat = async() => {
+const getStat = async () => {
   statItems = projectDetail.stat
 }
 
 const loadList1 = async () => {
   list1Items.value = projectDetail.strategies_with_reorg_count
-  totalItems1.value = response.totalItems
-  totalPages1.value = Math.ceil(response.totalItems / itemsPerPage)
 }
 
 const loadList2 = async () => {
@@ -116,3 +126,36 @@ onMounted(() => {
   getDetail()
 })
 </script>
+
+<style scoped>
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-icon {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #ffffff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
