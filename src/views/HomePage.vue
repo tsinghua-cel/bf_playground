@@ -53,14 +53,14 @@
       </ul>
     </section>
 
-    <section id="findings" class="section">
+    <section id="findings" class="finding-section">
       <h2>Key Findings</h2>
-      <div class="diagram">
-        <div class="diagram-item">
+      <div class="finding-diagram">
+        <div class="finding-item">
           <p><strong>Finding 1:</strong> Reproduction of a known attack</p>
           <p>We reproduced the Ex-ante Reorganization Attack successfully.</p>
         </div>
-        <div class="diagram-item">
+        <div class="finding-item">
           <p><strong>Finding 2:</strong> Three new incentive flaws</p>
           <ul>
             <li><strong>Selfish Mining Attack:</strong> Profitable with only 13.4% stake control.</li>
@@ -68,7 +68,7 @@
             <li><strong>Pyrrhic Victory Attack:</strong> Situations where honest validators incur greater losses than Byzantine validators.</li>
           </ul>
         </div>
-        <div class="diagram-item">
+        <div class="finding-item">
           <p><strong>Finding 3:</strong> Two implementation flaws</p>
           <ul>
             <li>Synchronization Deadlock: Prevents validators from normal operation.</li>
@@ -240,5 +240,44 @@ h2 {
 p {
   font-size: 1rem;
   margin-bottom: 1rem;
+}
+
+.finding-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.finding-item {
+  flex: 1 1 calc(33.333% - 1.5rem);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.finding-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.finding-item p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.finding-item ul {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.finding-item li {
+  margin-bottom: 0.5rem;
 }
 </style>

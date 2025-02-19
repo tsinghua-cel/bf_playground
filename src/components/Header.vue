@@ -6,7 +6,6 @@
         <li class="nav-item"><router-link to="/">Home</router-link></li>
         <li class="nav-item"><router-link to="/playground">Playground</router-link></li>
         <li class="nav-item"><router-link to="/blogs">Blogs</router-link></li>
-        <li class="nav-item"><router-link to="/#about">About</router-link></li>
       </ul>
     </nav>
     <a href="https://github.com/tsinghua-cel" target="_blank" rel="noopener noreferrer">

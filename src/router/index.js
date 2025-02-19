@@ -14,9 +14,11 @@ const routes = [{
         component: PlaygroundPage
     },
     {
-        path: '/blogs',
-        name: 'Blogs',
-        redirect: 'https://bfblog.bitheart.org',
+        path: '/documents',
+        name: 'Documents',
+        redirect: () => {
+            window.location.href = 'https://bfblog.bitheart.org'
+        }
     },
     {
         path: '/detail/:id',

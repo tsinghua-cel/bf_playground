@@ -10,9 +10,11 @@ export default defineConfig({
         ],
         sidebar: [
             {
-                text: 'Introduction',
+                text: 'Blogs',
                 items: [
-                    { text: 'Introduction', link: '/' },
+                    { text: 'System Overview', link: '/overview' },
+                    { text: 'System Design', link: '/design' },
+                    { text: 'How to deploy', link: '/deploy' },
                 ]
             },
             {
