@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:8088/bfapi/v1',
+    // baseURL: `${window.location.origin}/bfapi/v1`,
     headers: {
         'Content-Type': 'application/json',
     },
@@ -72,3 +73,13 @@ export const getBlogs = async (page = 1, pageSize = 10) => {
         throw error;
     }
 }
+
+export const getMarkdownFile = async (filePath) => {
+    try {
+        const response = await axios.get(filePath);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching markdown file from ${filePath}:`, error);
+        throw error;
+    }
+};

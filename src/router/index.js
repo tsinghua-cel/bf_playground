@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PlaygroundPage from '../views/PlaygroundPage.vue'
 import DetailPage from '../views/DetailPage.vue'
-import BlogsPage from '../views/Blogs.vue'
 import HomePage from '../views/HomePage.vue'
 
 const routes = [{
@@ -17,7 +16,7 @@ const routes = [{
     {
         path: '/blogs',
         name: 'Blogs',
-        component: BlogsPage
+        redirect: 'https://bfblog.bitheart.org',
     },
     {
         path: '/detail/:id',

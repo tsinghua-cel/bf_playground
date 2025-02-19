@@ -13,12 +13,11 @@
         <td class="center-align">{{ item.malicious_lose }}</td>
         <td class="center-align">{{ item.ratio }}</td>
         <td class="center-align clickable" @click="handleProjectIdClick(item.project_id)">
-              {{ item.project_id }}
+          {{ item.project_id }}
         </td>
         <td class="center-align">
-            <span @click="showModal(item.strategy_content)">
-              {{ item.strategy_content.slice(0, 20) }}...
-            </span>
+          <span>{{ item.strategy_content.slice(0, 20) }}...</span>
+          <button @click="showModal(item.strategy_content)" class="view-button">View All</button>
         </td>
       </tr>
       </tbody>
@@ -31,7 +30,6 @@
 import { ref } from 'vue'
 import Modal from './Modal.vue'
 import { useRouter } from 'vue-router'
-
 
 const props = defineProps({
   columns: {
@@ -56,7 +54,6 @@ const handleProjectIdClick = (projectId) => {
 </script>
 
 <style scoped>
-
 .styled-table {
   width: 100%;
   border-collapse: collapse;
@@ -90,5 +87,20 @@ const handleProjectIdClick = (projectId) => {
   cursor: pointer;
   color: blue;
   text-decoration: underline;
+}
+.view-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-size: 12px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.view-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 </style>
