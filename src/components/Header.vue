@@ -20,6 +20,7 @@
 <style scoped>
 .header {
   display: flex;
+  //background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;

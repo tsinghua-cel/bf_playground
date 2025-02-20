@@ -11,7 +11,7 @@
         <td class="center-align">{{ item.strategy_id }}</td>
         <td class="center-align">{{ item.reorg_count }}</td>
         <td class="center-align">
-            <span @click="showModal(item.strategy_content)">
+            <span class="clickable" @click="showModal(item.strategy_content)">
               {{ item.strategy_content.slice(0, 20) }}...
             </span>
         </td>

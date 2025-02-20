@@ -1,34 +1,40 @@
 <template>
   <div>
     <section id="overview" class="section">
-      <h2>Overview</h2>
-      <p>BunnyFinder is a novel framework designed to identify incentive flaws in Ethereum's Proof-of-Stake (PoS) protocol with minimal manual effort. Leveraging failure injection techniques, BunnyFinder uncovers both known and new incentive issues, helping to improve Ethereum's stability and security.</p>
-      <div class="diagram">
-        <div class="diagram-item">
-          <img src="../../public/EPTF-arch.png" alt="Diagram 1">
-          <p>Key architecture of BunnyFinder</p>
-        </div>
-        <div class="diagram-item">
-          <div class="sub-diagram">
-            <img src="../../public/BunnyFinder-strategy_struct.png" alt="Sub Diagram 2a">
-            <img src="../../public/bunnyfinder_instruction.png" alt="Sub Diagram 2b">
+        <h2>Overview</h2>
+        <p>BunnyFinder is a novel framework designed to identify incentive flaws in Ethereum's Proof-of-Stake (PoS) protocol with minimal manual effort. Leveraging failure injection techniques, BunnyFinder uncovers both known and new incentive issues, helping to improve Ethereum's stability and security.</p>
+        <div class="diagram">
+          <div class="diagram-item">
+            <img @click="enlargeImage('../../public/EPTF-arch.png')" src="../../public/EPTF-arch.png" alt="Diagram 1">
+            <p>Key architecture of BunnyFinder</p>
           </div>
-          <p>Execution process of strategies</p>
-        </div>
-        <div class="diagram-item">
-          <div class="sub-diagram">
-            <img src="../../public/bunnyfinder_honest_lost_rate.png" alt="Sub Diagram 2a">
+          <div class="diagram-item">
+            <div class="sub-diagram">
+              <img @click="enlargeImage('../../public/BunnyFinder-strategy_struct.png')" src="../../public/BunnyFinder-strategy_struct.png" alt="Sub Diagram 2a">
+              <img @click="enlargeImage('../../public/bunnyfinder_instruction.png')" src="../../public/bunnyfinder_instruction.png" alt="Sub Diagram 2b">
+            </div>
+            <p>Execution process of strategies</p>
           </div>
-          <p>Analysis of outcomes</p>
+          <div class="diagram-item" >
+            <div class="sub-diagram">
+              <img @click="enlargeImage('../../public/bunnyfinder_honest_lost_rate.png')" src="../../public/bunnyfinder_honest_lost_rate.png" alt="Sub Diagram 2a">
+              <img @click="enlargeImage('../../public/bunnyfinder_lost_ratio.png')" src="../../public/bunnyfinder_lost_ratio.png" alt="Sub Diagram 2b">
+            </div>
+            <p>Analysis of outcomes</p>
+          </div>
         </div>
+        <p>Key features include:</p>
+        <ul>
+          <li>An automated workflow for attack strategy generation and execution.</li>
+          <li>Comprehensive analysis of results to identify flaws.</li>
+          <li>Support for fine-tuning attack parameters for maximum impact.</li>
+        </ul>
+      </section>
+
+      <!-- Enlarged Image Modal -->
+      <div v-if="enlargedImage" class="modal" @click="closeImage">
+        <img :src="enlargedImage" class="enlarged-image">
       </div>
-      <p>Key features include:</p>
-      <ul>
-        <li>An automated workflow for attack strategy generation and execution.</li>
-        <li>Comprehensive analysis of results to identify flaws.</li>
-        <li>Support for fine-tuning attack parameters for maximum impact.</li>
-      </ul>
-    </section>
 
     <section id="methodology" class="section">
       <h2>Methodology</h2>
@@ -53,14 +59,14 @@
       </ul>
     </section>
 
-    <section id="findings" class="finding-section">
+    <section id="findings" class="section">
       <h2>Key Findings</h2>
-      <div class="finding-diagram">
-        <div class="finding-item">
+      <div class="diagram">
+        <div class="diagram-item">
           <p><strong>Finding 1:</strong> Reproduction of a known attack</p>
           <p>We reproduced the Ex-ante Reorganization Attack successfully.</p>
         </div>
-        <div class="finding-item">
+        <div class="diagram-item">
           <p><strong>Finding 2:</strong> Three new incentive flaws</p>
           <ul>
             <li><strong>Selfish Mining Attack:</strong> Profitable with only 13.4% stake control.</li>
@@ -68,7 +74,7 @@
             <li><strong>Pyrrhic Victory Attack:</strong> Situations where honest validators incur greater losses than Byzantine validators.</li>
           </ul>
         </div>
-        <div class="finding-item">
+        <div class="diagram-item">
           <p><strong>Finding 3:</strong> Two implementation flaws</p>
           <ul>
             <li>Synchronization Deadlock: Prevents validators from normal operation.</li>
@@ -110,6 +116,15 @@
 
 <script setup>
 import { ref } from 'vue'
+const enlargedImage = ref(null)
+
+const enlargeImage = (imageSrc) => {
+  enlargedImage.value = imageSrc
+}
+
+const closeImage = () => {
+  enlargedImage.value = null
+}
 
 const features = ref([
   { id: 1, image: '@/assets/feature1.jpg', title: 'Feature 1', description: 'Description for feature 1' },
@@ -130,9 +145,9 @@ body {
 .section {
   padding: 2rem;
   background-color: #fff;
-  margin-bottom: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.5rem; /* Remove bottom margin */
 }
 
 .section h2 {
@@ -159,58 +174,6 @@ body {
 
 .section a:hover {
   color: #6a11cb;
-}
-
-.diagram {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.diagram-item {
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 300px;
-  padding: 1rem;
-  box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.diagram-item img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0.3rem;
-}
-
-.diagram-item p {
-  font-size: 1rem;
-  color: #555;
-  margin: 0;
-}
-
-.sub-diagram {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.sub-diagram img {
-  max-width: 100%;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 ul {
@@ -250,34 +213,114 @@ p {
   margin-bottom: 2rem;
 }
 
-.finding-item {
-  flex: 1 1 calc(33.333% - 1.5rem);
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  box-sizing: border-box;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
 .finding-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.finding-item p {
+.diagram {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.diagram-item {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 300px;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.diagram-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.diagram-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.3rem;
+}
+.diagram-item p {
   font-size: 1rem;
   color: #555;
+  margin: 0;
+}
+.sub-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+.sub-diagram img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.diagram {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.diagram-item {
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  height: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.diagram-item p {
+  font-size: 1rem;
+  color: #333;
   margin: 0.5rem 0;
 }
-
-.finding-item ul {
+.diagram-item ul {
   padding-left: 1.5rem;
   margin: 0.5rem 0;
+  color: #555;
+  list-style-type: disc;
+}
+.diagram-item li {
+  margin-bottom: 0.5rem;
+}
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.finding-item li {
-  margin-bottom: 0.5rem;
+.enlarged-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 </style>
