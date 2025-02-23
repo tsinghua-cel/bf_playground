@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mb-12">
-      <Dash />
+      <Dash :stat="statItems"/>
     </div>
 
     <div class="mb-12">

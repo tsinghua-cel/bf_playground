@@ -26,13 +26,21 @@
 <script setup>
 import { ref } from 'vue'
 
-const stat = ref({
-  project_id: 'e66825c9-21e4-4fba-b226-e08cf6e2de03',
-  total_slot: 29919,
-  total_strategy: 656,
-  start_time: 1739244259,
-  end_time: 1739604151
+const props = defineProps({
+  columns: {
+    type: Array,
+    default: () => ['Strategy ID', 'Reorg Count', 'Strategy Content']
+  },
+  stat: ref({})
 })
+
+// const stat = ref({
+//   project_id: 'e66825c9-21e4-4fba-b226-e08cf6e2de03',
+//   total_slot: 29919,
+//   total_strategy: 656,
+//   start_time: 1739244259,
+//   end_time: 1739604151
+// })
 </script>
 
 <style scoped>
