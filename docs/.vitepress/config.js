@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-    title: 'BunnyFunder Documentation',
-    description: 'User manual for BunnyFunder framework',
+    title: 'BunnyFinder Documentation',
+    description: 'Documents for BunnyFinder framework',
     themeConfig: {
         nav: [
             { text: 'Home', link: '/' },
@@ -22,7 +22,7 @@ export default defineConfig({
                 items: [
                     { text: 'Installation', link: '/installation' },
                     { text: 'Configuration', link: '/configuration' },
-                    { text: 'Usage', link: '/usage' },
+                    { text: 'Basic Usage', link: '/usage' },
                     { text: 'Advanced Usage', link: '/advanced-usage' }
                     // { text: 'Guide', link: '/guide' }
                 ]
@@ -30,6 +30,7 @@ export default defineConfig({
             {
                 text: 'Development',
                 items: [
+                    {text: 'Database Statement', link: '/db'},
                     { text:'Github', link: 'https://github.com/tsinghua-cel'},
                     // { text:'Paper', link: '/pager.pdf'}
                 ]

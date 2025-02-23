@@ -1,9 +1,8 @@
-
-# Usage
-## Basic Usage
+# Basic Usage
 We have integrated `Bunnyfinder` into the `ethereum-package`.
 You can run tests on an Ethereum PoS network with multiple client versions. Below is an example of running tests and retrieving the results.
-#### Start the Test
+
+## Start the Test
 We provide some scripts and test parameter files in the `guide` directory.
 
 First, you need to switch to the `guide` directory.
@@ -57,7 +56,7 @@ b861d349ff1a   el-2-geth-lighthouse                             engine-rpc: 8551
 ff8b93b77564   vc-1-besu-prysm                                  metrics: 8080/tcp -> http://127.0.0.1:32826   RUNNING
 305d686276e2   vc-2-geth-lighthouse                             metrics: 8080/tcp -> http://127.0.0.1:32827   RUNNING
 ```
-#### Retrieve the Results
+## Retrieve the Results
 After running the test for at least 3 epochs (about 20 minutes), we can log in to the database to check the results.
 
 Use SQL query to check whether any vulnerabilities have been detected and identify the corresponding strategies.
@@ -104,7 +103,7 @@ If *SQL1*, *SQL2*, and *SQL3* all return empty results, it means that none of th
 Otherwise, it indicates that the attack is successful with some effective strategies.
 
 
-#### Stop the Test
+## Stop the Test
 To stop the test, run the following command:
 ```bash
 ./stop.sh testname

@@ -1,5 +1,5 @@
 # Introduction
-Welcome to the BunnyFunder User Manual. This guide will help you get started with installing, configuring, and using the BunnyFunder framework.
+Welcome to the BunnyFinder documents. This guide will help you get started with installing, configuring, and using the BunnyFinder framework.
 
 ![Logo](./images/img.png)
 

@@ -1,8 +1,8 @@
 
-## Advance Usage
+# Advance Usage
 This section will introduce how to add new attack strategy in `Bunnyfinder` and define the test network.
 
-### Create Custom Strategies
+## Create Custom Strategies
 To define a custom attack strategy, follow these steps:
 ##### Change the Directory
 Move to the `bunnyfinder/library` directory:
@@ -96,4 +96,12 @@ Build the code and generate updated docker images:
 ```bash
 make docker
 ```
-And then, you can refer to the `Basic Usage` section to run the test network with the new strategy.
+And then, you can configure to run the test with new strategy.
+
+```yaml
+  image: 'bunnyfinder:latest'
+  strategy: 'mystrategy'
+  dbconnect: 'eth:12345678@tcp(127.0.0.1:3306)/eth'
+  max_malicious_idx: "85"
+  duration_per_strategy: "30"
+```
