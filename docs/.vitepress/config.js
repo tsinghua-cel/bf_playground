@@ -9,14 +9,14 @@ export default defineConfig({
             { text: 'Website', link: 'https://bfplay.bitheart.org' },
         ],
         sidebar: [
-            {
-                text: 'Blogs',
-                items: [
-                    { text: 'System Overview', link: '/overview' },
-                    { text: 'System Design', link: '/design' },
-                    { text: 'How to deploy', link: '/deploy' },
-                ]
-            },
+            // {
+            //     text: 'Blogs',
+            //     items: [
+            //         { text: 'System Overview', link: '/overview' },
+            //         { text: 'System Design', link: '/design' },
+            //         { text: 'How to deploy', link: '/deploy' },
+            //     ]
+            // },
             {
                 text: 'Tutorials',
                 items: [
