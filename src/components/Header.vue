@@ -3,8 +3,7 @@
 <!--    <img src="/rect-logo.svg" alt="Logo" class="logo" />-->
     <nav>
       <ul class="nav-list">
-        <li class="nav-item"><router-link to="/">Home</router-link></li>
-        <li class="nav-item"><router-link to="/playground">Playground</router-link></li>
+        <li class="nav-item"><router-link to="/">Playground</router-link></li>
         <li class="nav-item"><router-link to="/documents">Documents</router-link></li>
       </ul>
     </nav>
