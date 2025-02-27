@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Play History</h2>
+      <h2 class="text-2xl font-semibold mb-4">Evaluation results</h2>
       <ProjectList :columns="list1Columns" :items="list1Items" />
       <Pagination
           :current-page="currentPage1"
@@ -14,7 +14,8 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4">Comprehensive Lost Ratio Analysis</h2>
+      <h2 class="text-2xl font-semibold mb-4">Best strategies in all instances</h2>
+      <p></p>
       <TopStrategyList :columns="list2Columns" :items="list2Items" />
       <Pagination
           :current-page="currentPage2"
@@ -42,8 +43,8 @@ import { getProjectList , getTopStrategies } from '../services/api'
 
 const router = useRouter()
 
-const list1Columns = ['Project ID', 'Total Slot', 'Start Time', 'End Time']
-const list2Columns = ['Strategy ID', 'Honest Lose', 'Malicious Lose', 'Ratio', 'Project ID', 'Strategy Content']
+const list1Columns = ['Instance ID', 'Strategy Count', 'Start Time', 'End Time']
+const list2Columns = [ 'Strategy Content', 'Lost Ratio of Honest Validator (L1)', 'Lost Ratio of Malicious Validator (L2)', 'Ratio (L1/L2)', 'Project ID']
 
 const list1Items = ref([])
 const list2Items = ref([])
@@ -52,7 +53,7 @@ const currentPage1 = ref(1)
 const currentPage2 = ref(1)
 const totalPages1 = ref(1)
 const totalPages2 = ref(1)
-const itemsPerPage = 7
+const itemsPerPage = 4
 const totalItems1 = ref(0)
 const totalItems2 = ref(0)
 const isLoading = ref(false)

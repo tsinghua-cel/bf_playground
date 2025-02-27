@@ -4,6 +4,9 @@
       <button class="copy-button" @click="copyContent">
         <img src="/assets/copy-icon.png" alt="Copy" class="copy-icon" />
       </button>
+      <button class="tip" @click="redirectToUrl">
+        <img src="/assets/tip.png" alt="Tip" class="copy-icon" />
+      </button>
       <div class="modal-body">
         <pre v-html="highlightedContent" class="line-wrap"></pre>
       </div>
@@ -22,7 +25,11 @@ hljs.registerLanguage('json', json)
 
 const props = defineProps({
   isVisible: Boolean,
-  content: String
+  content: String,
+  tipUrl: {
+    type: String,
+    default: 'https://www.cryptoeco.org/bf/document/strategy.html'
+  }
 })
 
 const emit = defineEmits(['close'])
@@ -44,6 +51,10 @@ const copyContent = async () => {
   } catch (err) {
     console.error('Failed to copy: ', err)
   }
+}
+
+const redirectToUrl = () => {
+  window.location.href = props.tipUrl
 }
 
 watch(() => props.content, (newContent) => {
@@ -87,6 +98,16 @@ watch(() => props.content, (newContent) => {
 .copy-icon {
   width: 20px;
   height: 20px;
+}
+
+.tip {
+  position: absolute;
+  top: 10px;
+  right: 50px; /* Adjust position as needed */
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .modal-body {

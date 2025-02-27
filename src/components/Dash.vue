@@ -3,9 +3,9 @@
     <table class="table table-bordered table-hover">
       <thead class="thead-light">
       <tr>
-        <th>Project ID</th>
-        <th>Total Slot</th>
-        <th>Total Strategy</th>
+        <th>Instance ID</th>
+        <th>Slot Count</th>
+        <th>Strategy Count</th>
         <th>Start Time</th>
         <th>End Time</th>
       </tr>

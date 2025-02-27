@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="explanation">
+      <img src="/assets/tip-icon.png" alt="Tip" class="tip-icon" />
+      <span class="explanation-text">This table shows the strategy details along with the corresponding number of chain reorganizations (reorgs) it induced, sorted in descending order based on the reorg count.</span>
+    </div>
     <table class="styled-table">
       <thead>
       <tr>
@@ -8,13 +12,14 @@
       </thead>
       <tbody class="scrollable-tbody">
       <tr v-for="item in items" :key="item.project_id">
-        <td class="center-align">{{ item.strategy_id }}</td>
-        <td class="center-align">{{ item.reorg_count }}</td>
         <td class="center-align">
             <span class="clickable" @click="showModal(item.strategy_content)">
-              {{ item.strategy_content.slice(0, 20) }}...
+              {{ item.strategy_content.slice(0, 100) }}...
             </span>
         </td>
+<!--        <td class="center-align">{{ item.strategy_id }}</td>-->
+        <td class="center-align">{{ item.reorg_count }}</td>
+
       </tr>
       </tbody>
     </table>
@@ -31,7 +36,7 @@ import { useRouter } from 'vue-router'
 const props = defineProps({
   columns: {
     type: Array,
-    default: () => ['Strategy ID', 'Reorg Count', 'Strategy Content']
+    default: () => ['Strategy Content', 'Reorg Count']
   },
   items: Array
 })
@@ -49,6 +54,31 @@ const showModal = (content) => {
 
 <style scoped>
 
+
+.explanation {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.tip-icon {
+  margin-right: 10px;
+  width: 20px; /* Set the desired width */
+  height: 20px; /* Set the desired height */
+  font-size: 20px;
+}
+
+
+.tip-icon {
+}
+
+.explanation-text {
+  font-size: 16px;
+  color: #555;
+}
 .styled-table {
   width: 100%;
   border-collapse: collapse;

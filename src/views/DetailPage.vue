@@ -5,25 +5,17 @@
     </div>
 
     <div class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Strategy Reorg Analysis</h2>
+      <h2 class="text-2xl font-semibold mb-4">Result with reorganizations</h2>
       <ReorgStrategyList :columns="list1Columns" :items="list1Items" />
-      <Pagination
-          :current-page="currentPage1"
-          :total-pages="totalPages1"
-          :items-per-page="itemsPerPage"
-          :total-items="totalItems1"
-          @prev="prevPage1"
-          @next="nextPage1"
-      />
     </div>
 
     <div class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Honest Lost Rate Analysis</h2>
+      <h2 class="text-2xl font-semibold mb-4">Result with lost rate</h2>
       <HonestStrategyList :columns="list2Columns" :items="list2Items" />
     </div>
 
     <div class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Comprehensive Lost Ratio Analysis</h2>
+      <h2 class="text-2xl font-semibold mb-4">Result with best lost ratio</h2>
       <RatioStrategyList :columns="list3Columns" :items="list3Items" />
     </div>
 
@@ -50,9 +42,9 @@ import RatioStrategyList from "../components/RatioStrategyList.vue";
 
 const route = useRoute()
 
-const list1Columns = ['Strategy ID', 'Reorg Count', 'Strategy Content']
-const list2Columns = ['Strategy ID', 'Honest Lose', 'Strategy Content']
-const list3Columns = ['Strategy ID', 'Honest Lose', 'Malicious Lose', 'Ratio', 'Strategy Content']
+const list1Columns = ['Strategy Content', 'Reorg Count']
+const list2Columns = ['Strategy Content', 'Honest Lost Rate']
+const list3Columns = ['Strategy Content', 'Lost Ratio of Honest Validator (L1)', 'Lost Ratio of Malicious Validator (L2)', 'Ratio (L1/L2)']
 
 let statItems = ref({})
 const list1Items = ref([])

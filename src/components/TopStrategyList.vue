@@ -8,17 +8,18 @@
       </thead>
       <tbody class="scrollable-tbody">
       <tr v-for="item in items" :key="item.project_id">
-        <td class="center-align">{{ item.strategy_id }}</td>
+        <td class="center-align">
+          <span>{{ item.strategy_content.slice(0,100) }}...</span>
+          <button @click="showModal(item.strategy_content)" class="view-button">View All</button>
+        </td>
+<!--        <td class="center-align">{{ item.strategy_id }}</td>-->
         <td class="center-align">{{ item.honest_lose }}</td>
         <td class="center-align">{{ item.malicious_lose }}</td>
         <td class="center-align">{{ item.ratio }}</td>
         <td class="center-align clickable" @click="handleProjectIdClick(item.project_id)">
-          {{ item.project_id }}
+          {{ item.project_id.slice(0,5) }}...{{ item.project_id.slice(-5,) }}
         </td>
-        <td class="center-align">
-          <span>{{ item.strategy_content.slice(0, 20) }}...</span>
-          <button @click="showModal(item.strategy_content)" class="view-button">View All</button>
-        </td>
+
       </tr>
       </tbody>
     </table>

@@ -8,7 +8,7 @@
     <tbody>
     <tr v-for="item in items" :key="item.project_id">
       <td :style="getColumnStyle('Project ID')" class="center-align clickable" @click="handleProjectIdClick(item.project_id)">{{ item.project_id }}</td>
-      <td :style="getColumnStyle('Total Slot')" class="center-align">{{ item.total_slot }}</td>
+      <td :style="getColumnStyle('Strategy Count')" class="center-align">{{ item.total_strategy }}</td>
       <td :style="getColumnStyle('Start Time')" class="center-align">{{ new Date(item.start_time * 1000).toLocaleString() }}</td>
       <td :style="getColumnStyle('End Time')" class="center-align">{{ new Date(item.end_time * 1000).toLocaleString() }}</td>
     </tr>
@@ -30,9 +30,9 @@ const router = useRouter()
 const getColumnStyle = (column) => {
   switch (column) {
     case 'Project ID':
-      return { width: '400px' }
-    case 'Total Slot':
-      return { width: '100px' }
+      return { width: '350px' }
+    case 'Strategy Count':
+      return { width: '140px' }
     case 'Start Time':
       return { width: '300px' }
     case 'End Time':
