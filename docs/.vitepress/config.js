@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-    title: 'BunnyFinder Documentation',
+    title: 'Documentation',
     description: 'Documents for BunnyFinder framework',
     themeConfig: {
         nav: [
@@ -31,6 +31,7 @@ export default defineConfig({
                 text: 'Development',
                 items: [
                     {text: 'Database Statement', link: '/db'},
+                    {text: 'Strategy Category', link: '/strategy'},
                     { text:'Github', link: 'https://github.com/tsinghua-cel'},
                     // { text:'Paper', link: '/pager.pdf'}
                 ]
