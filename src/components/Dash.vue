@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <table class="table table-bordered table-hover">
+    <table class="styled-table">
       <thead class="thead-light">
       <tr>
         <th>Instance ID</th>
@@ -12,11 +12,11 @@
       </thead>
       <tbody>
       <tr>
-        <td>{{ stat.project_id }}</td>
-        <td>{{ stat.total_slot }}</td>
-        <td>{{ stat.total_strategy }}</td>
-        <td>{{ new Date(stat.start_time * 1000).toLocaleString() }}</td>
-        <td>{{ new Date(stat.end_time * 1000).toLocaleString() }}</td>
+        <td  class="center-align">{{ stat.project_id }}</td>
+        <td  class="center-align">{{ stat.total_slot }}</td>
+        <td  class="center-align">{{ stat.total_strategy }}</td>
+        <td  class="center-align">{{ new Date(stat.start_time * 1000).toLocaleString() }}</td>
+        <td  class="center-align">{{ new Date(stat.end_time * 1000).toLocaleString() }}</td>
       </tr>
       </tbody>
     </table>
@@ -45,10 +45,10 @@ const props = defineProps({
 
 <style scoped>
 .dashboard {
-  padding: 20px;
+  //padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
@@ -58,34 +58,40 @@ const props = defineProps({
   text-align: center;
 }
 
-.table {
+
+.styled-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.table th, .table td {
-  padding: 15px;
-  border: 1px solid #ddd;
+  margin: 25px 0;
+  font-size: 18px;
   text-align: left;
 }
 
-.thead-light th {
-  background-color: #f1f1f1;
-  color: #333;
+.styled-table thead tr {
+  background-color: #2575fc;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
 }
 
-.table-hover tbody tr:hover {
-  background-color: #f5f5f5;
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
 }
 
-.table th {
-  font-weight: 600;
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
-.table td {
-  color: #555;
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #2575fc;
+}
+
+.center-align {
+  text-align: center;
 }
 </style>

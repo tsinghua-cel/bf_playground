@@ -10,14 +10,10 @@
 
 <style scoped>
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e0e0e0;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  margin-top: 2rem;
 }
 </style>

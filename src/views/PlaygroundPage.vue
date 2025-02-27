@@ -111,6 +111,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.text-2xl {
+  color: #2575fc;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
 .loading-overlay {
   position: fixed;
   top: 0;

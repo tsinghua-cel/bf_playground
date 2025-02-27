@@ -85,7 +85,7 @@ const handleProjectIdClick = (projectId) => {
 }
 
 .styled-table thead tr {
-  background-color: #009879;
+  background-color: #2575fc;
   color: #ffffff;
   text-align: center;
   font-weight: bold;
@@ -105,7 +105,7 @@ const handleProjectIdClick = (projectId) => {
 }
 
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #2575fc;
 }
 
 .center-align {

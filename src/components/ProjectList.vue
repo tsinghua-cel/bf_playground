@@ -56,7 +56,7 @@ const handleProjectIdClick = (projectId) => {
   text-align: left;
 }
 .styled-table thead tr {
-  background-color: #009879;
+  background-color: #2575fc;
   color: #ffffff;
   text-align: center;
   font-weight: bold;
@@ -66,13 +66,15 @@ const handleProjectIdClick = (projectId) => {
   padding: 12px 15px;
 }
 .styled-table tbody tr {
+  background-color: #ffffff;
+  color: #000000;
   border-bottom: 1px solid #dddddd;
 }
 .styled-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #2575fc;
 }
 .center-align {
   text-align: center;
