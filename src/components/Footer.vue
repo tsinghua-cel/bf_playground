@@ -1,7 +1,7 @@
 <!-- src/components/Footer.vue -->
 <template>
   <footer class="footer">
-    <p>&copy; 2024 BunnyFinder Framework. All rights reserved.</p>
+    <p>© 2025 <a href="https://www.cryptoeco.org/" target="_blank">Cryptoeco</a>. All rights reserved.</p>
   </footer>
 </template>
 
