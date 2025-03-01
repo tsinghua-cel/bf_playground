@@ -5,7 +5,7 @@
 - `min_malicious_idx`: The min index that actor as a malicious validator.
 - `max_malicious_idx`: The max index that actor as a malicious validator.
 - `duration_per_strategy`: The execute duration for each strategy in minutes, this is used when `strategy` is set to `all` or multiple strategies.
-- `strategy`: The strategy to use, support `all`, `random`, `exante`, `ext_exante`, `sandwich`, `ext_sandwich`, `staircase`, `ext_staircase`, `unrealized`, `ext_unrealized`, `withholding`, `ext_withholding`.
+- `strategy`: The strategy to use, support `all`, `random`, `exante`, `ext_exante`, `sandwich`, `ext_sandwich`, `staircase`, `ext_staircase`, `unrealized`, `ext_unrealized`, `withholding`, `ext_withholding`, the meaning of each strategy is explained in [strategy description](#strategy-description).
 - `openai_key`: The openai api key, this is used when `strategy` is set to `ai`, also supported DeepSeek api.
 - `openai_base_url`: The openai base url, this is used when `strategy` is set to `ai`, also supported DeepSeek api.
 - `llm_model`: The large language model to use, this is used when `strategy` is set to `ai`, We recommend using deepseek-r1, deepseek-v3, gpt-4o.

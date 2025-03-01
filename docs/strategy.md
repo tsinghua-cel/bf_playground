@@ -1,6 +1,6 @@
-# Strategy Introduction
+# Strategy Category
 
-In this section, we will describe how we formally define attack behavior.. We define a strategy specification format (SSF) in the form of JSON, specifying the exact time each message should be delayed and what content the message should be modified for the Byzantine validators. SSF file is defined as some JSON templates for both order manipulation and content manipulation. Based on the concrete attack strategies (e.g., the number of units each message should be delayed), the corresponding template is "filled". To be specific, in each slot, our SSF defines three factors: `slot` denotes the slot Byzantine validators should take the actions; `actions` denotes the actual attack strategies. One SSF file contains all slots' attack strategies in three epoch. The strategy format is shown in JSON. An example of JSON is as follows:
+In this section, we will describe how we formally define attack behavior. We define a strategy specification format (SSF) in the form of JSON, specifying the exact time each message should be delayed and what content the message should be modified for the Byzantine validators. SSF file is defined as some JSON templates for both order manipulation and content manipulation. Based on the concrete attack strategies (e.g., the number of units each message should be delayed), the corresponding template is "filled". To be specific, in each slot, our SSF defines three factors: `slot` denotes the slot Byzantine validators should take the actions; `actions` denotes the actual attack strategies. One SSF file contains all slots' attack strategies in three epoch. The strategy format is shown in JSON. An example of JSON is as follows:
 ```JSON
 [   
     {
