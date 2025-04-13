@@ -4,6 +4,7 @@
       <thead class="thead-light">
       <tr>
         <th>Instance ID</th>
+        <th>Category</th>
         <th>Slot Count</th>
         <th>Strategy Count</th>
         <th>Start Time</th>
@@ -13,6 +14,7 @@
       <tbody>
       <tr>
         <td  class="center-align">{{ stat.project_id }}</td>
+        <td  class="center-align">{{ stat.category }}</td>
         <td  class="center-align">{{ stat.total_slot }}</td>
         <td  class="center-align">{{ stat.total_strategy }}</td>
         <td  class="center-align">{{ new Date(stat.start_time * 1000).toLocaleString() }}</td>

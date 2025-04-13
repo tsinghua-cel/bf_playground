@@ -8,7 +8,7 @@
     <tbody>
     <tr v-for="item in items" :key="item.project_id">
       <td :style="getColumnStyle('Project ID')" class="center-align clickable" @click="handleProjectIdClick(item.project_id)">{{ item.project_id }}</td>
-      <td :style="getColumnStyle('Category')" class="center-align">{{ item.strategy_category }}</td>
+      <td :style="getColumnStyle('Category')" class="center-align">{{ item.category }}</td>
       <td :style="getColumnStyle('Strategy Count')" class="center-align">{{ item.total_strategy }}</td>
       <td :style="getColumnStyle('Start Time')" class="center-align">{{ new Date(item.start_time * 1000).toLocaleString() }}</td>
       <td :style="getColumnStyle('End Time')" class="center-align">{{ new Date(item.end_time * 1000).toLocaleString() }}</td>
