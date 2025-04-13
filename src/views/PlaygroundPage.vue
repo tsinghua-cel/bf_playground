@@ -43,7 +43,7 @@ import { getProjectList , getTopStrategies } from '../services/api'
 
 const router = useRouter()
 
-const list1Columns = ['Instance ID', 'Strategy Count', 'Start Time', 'End Time']
+const list1Columns = ['Instance ID', 'Category', 'Strategy Count', 'Start Time', 'End Time']
 const list2Columns = [ 'Strategy Content', 'Lost Ratio of Honest Validator (L1)', 'Lost Ratio of Malicious Validator (L2)', 'Ratio (L1/L2)', 'Project ID']
 
 const list1Items = ref([])
