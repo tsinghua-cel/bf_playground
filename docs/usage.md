@@ -60,6 +60,8 @@ After running the test for at least 3 epochs (about 20 minutes), we can view the
 
 The results will be displayed in a table format, showing the strategies and their effectiveness.
 
+A demo is at [bf-online](https://bf-online.cryptoeco.org/).
+
 
 ## Stop the Test
 To stop the test, run the following command:
