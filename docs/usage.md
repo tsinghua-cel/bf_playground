@@ -3,15 +3,14 @@ We have integrated `Bunnyfinder` into the `ethereum-package`.
 You can run tests on an Ethereum PoS network with multiple client versions. Below is an example of running tests and retrieving the results.
 
 ## Start the Test
-We provide some scripts and test parameter files in the `guide` directory.
-
-First, you need to switch to the `guide` directory.
+First, you need to start the test environment. The test environment is based on the `mysql` database and `bfbackend`.
 ```bash
-cd guide
+$ docker compose up -d
 ```
+
 Then, use the following command to start the test.
 ```bash
-./run.sh testname ./testset/network_params.yaml
+$ ./scripts/run.sh bftest ./networkparams/example
 ```
 Here, we are running three sets of beacon nodes, each using a different client. The execution layer includes `besu`, `geth`, and `nethermind`, while the consensus layer includes `prysm`, `lighthouse`, and `teku`.
 
@@ -57,57 +56,16 @@ ff8b93b77564   vc-1-besu-prysm                                  metrics: 8080/tc
 305d686276e2   vc-2-geth-lighthouse                             metrics: 8080/tcp -> http://127.0.0.1:32827   RUNNING
 ```
 ## Retrieve the Results
-After running the test for at least 3 epochs (about 20 minutes), we can log in to the database to check the results.
+After running the test for at least 3 epochs (about 20 minutes), we can view the result at browser `http://localhost:35770/`. 
 
-Use SQL query to check whether any vulnerabilities have been detected and identify the corresponding strategies.
-
-(1) Log in to the database, enter the password, and then switch to the eth database. When
-prompted for a password, enter “12345678”.
-```bash
-$ docker exec -it ethmysql mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 9
-Server version: 9.1.0 MySQL Community Server - GPL
-
-mysql> use eth
-Database changed
-```
-(2) Use the following SQL queries to check for specific vulnerabilities:
-
-##### SQL1: This query checks for reorganization events
-```sql
-SELECT content, reorg_count 
-FROM t_strategy 
-WHERE reorg_count > 0;
-```
-If the result is non-empty, it indicates that the current attack has triggered a reorganization, and the \texttt{content} field should be recorded as an effective attack strategy.
-
-##### SQL2: This query checks for increased "honest validator's reward loss"
-```sql
-SELECT content, honest_lose_rate_avg 
-FROM t_strategy 
-WHERE honest_lose_rate_avg > 0;
-```
-If the result is non-empty, it indicates that the current attack has caused an increase in the honest reward loss rate. Again, the `content` field should be recorded as an effective attack strategy.
-
-##### SQL3: This query compares the honest and attacker loss rates
-```sql
-SELECT content, honest_lose_rate_avg, attacker_lose_rate_avg 
-FROM t_strategy 
-WHERE honest_lose_rate_avg > attacker_lose_rate_avg;
-```
-If the result is non-empty, it suggests that the honest reward loss rate is higher than the attacker's loss rate, and the \texttt{content} field should be recorded as an effective attack strategy.
-
-If *SQL1*, *SQL2*, and *SQL3* all return empty results, it means that none of the strategies in the current attack are effective.
-Otherwise, it indicates that the attack is successful with some effective strategies.
+The results will be displayed in a table format, showing the strategies and their effectiveness.
 
 
 ## Stop the Test
 To stop the test, run the following command:
 ```bash
-./stop.sh testname
+$ ./scripts/stop.sh bftest
 ```
 Due to the limitations of Kurtosis, the test cannot be restarted once it has stopped.
 
-
+The script will dump all service logs to the `./logs` directory, which can be useful for debugging or further analysis.

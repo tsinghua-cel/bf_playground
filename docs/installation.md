@@ -11,6 +11,6 @@
 - At least 500GB disk space
 
 ## Installation Steps
-* Clone the repository: `git clone -b bf https://github.com/tsinghua-cel/attacker-service bunnyfinder`
-* Enter the directory: `cd bunnyfinder`
-* Build the docker images: `make docker`
+* Clone the repository: `git clone https://github.com/tsinghua-cel/deploy_bf`
+* Enter the directory: `cd deploy_bf`
+* Pull docker images: `docker compose pull`
