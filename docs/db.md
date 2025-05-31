@@ -13,70 +13,106 @@ GRANT ALL ON *.* TO 'eth'@'127.0.0.1';
 CREATE SCHEMA eth;
 
 USE eth;
-
-CREATE TABLE project (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    project_id VARCHAR(255) NOT NULL DEFAULT '',
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    strategy_count INT NOT NULL DEFAULT 0
+create table if not exists project
+(
+    id                bigint auto_increment
+        primary key,
+    project_id        varchar(255) default '' not null,
+    created_at        datetime                not null,
+    updated_at        datetime                not null,
+    strategy_category varchar(255) default '' not null,
+    strategy_count    int          default 0  not null,
+    latest_slot       bigint       default 0  not null
 );
 
-CREATE TABLE t_attest_reward (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    project_id VARCHAR(255) NOT NULL DEFAULT '',
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    epoch BIGINT NOT NULL DEFAULT 0,
-    validator_index INT NOT NULL DEFAULT 0,
-    head_amount BIGINT NOT NULL DEFAULT 0,
-    target_amount BIGINT NOT NULL DEFAULT 0,
-    source_amount BIGINT NOT NULL DEFAULT 0
+create table if not exists t_attest_duty
+(
+    id         bigint auto_increment
+        primary key,
+    project_id varchar(255) default '' not null,
+    created_at datetime                not null,
+    updated_at datetime                not null,
+    epoch      bigint       default 0  not null,
+    slot       bigint       default 0  not null,
+    validator  bigint       default 0  not null
 );
 
-CREATE TABLE t_block_reward (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    project_id VARCHAR(255) NOT NULL DEFAULT '',
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    slot BIGINT NOT NULL DEFAULT 0,
-    proposer_index INT NOT NULL DEFAULT 0,
-    total_amount BIGINT NOT NULL DEFAULT 0,
-    attestation_amount BIGINT NOT NULL DEFAULT 0,
-    sync_aggregate_amount BIGINT NOT NULL DEFAULT 0,
-    proposer_slashing_amount BIGINT NOT NULL DEFAULT 0,
-    attester_slashing_amount BIGINT NOT NULL DEFAULT 0
+create table if not exists t_attest_reward
+(
+    id              bigint auto_increment
+        primary key,
+    project_id      varchar(255) default '' not null,
+    created_at      datetime                not null,
+    updated_at      datetime                not null,
+    epoch           bigint       default 0  not null,
+    validator_index int          default 0  not null,
+    head_amount     bigint       default 0  not null,
+    target_amount   bigint       default 0  not null,
+    source_amount   bigint       default 0  not null
 );
 
-CREATE TABLE t_chain_reorg (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    project_id VARCHAR(255) NOT NULL DEFAULT '',
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    epoch BIGINT NOT NULL DEFAULT 0,
-    slot BIGINT NOT NULL DEFAULT 0,
-    depth INT NOT NULL DEFAULT 0,
-    old_block_slot BIGINT NOT NULL DEFAULT 0,
-    new_block_slot BIGINT NOT NULL DEFAULT 0,
-    old_block_proposer_index BIGINT NOT NULL DEFAULT 0,
-    new_block_proposer_index BIGINT NOT NULL DEFAULT 0,
-    old_head_state VARCHAR(255) NOT NULL DEFAULT '',
-    new_head_state VARCHAR(255) NOT NULL DEFAULT ''
+create table if not exists t_block_duty
+(
+    id         bigint auto_increment
+        primary key,
+    project_id varchar(255) default '' not null,
+    created_at datetime                not null,
+    updated_at datetime                not null,
+    epoch      bigint       default 0  not null,
+    slot       bigint       default 0  not null,
+    validator  bigint       default 0  not null
 );
 
-CREATE TABLE t_strategy (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    project_id VARCHAR(255) NOT NULL DEFAULT '',
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    uuid VARCHAR(255) NOT NULL DEFAULT '',
-    content VARCHAR(10000) NULL,
-    min_epoch BIGINT NOT NULL DEFAULT 0,
-    max_epoch BIGINT NOT NULL DEFAULT 0,
-    is_end TINYINT(1) NOT NULL DEFAULT 0,
-    reorg_count INT NOT NULL DEFAULT 0,
-    impact_validator_count INT NOT NULL DEFAULT 0,
-    honest_lose_rate_avg DOUBLE NOT NULL DEFAULT 0,
-    attacker_lose_rate_avg DOUBLE NOT NULL DEFAULT 0
+create table if not exists t_block_reward
+(
+    id                       bigint auto_increment
+        primary key,
+    project_id               varchar(255) default '' not null,
+    created_at               datetime                not null,
+    updated_at               datetime                not null,
+    slot                     bigint       default 0  not null,
+    proposer_index           int          default 0  not null,
+    total_amount             bigint       default 0  not null,
+    attestation_amount       bigint       default 0  not null,
+    sync_aggregate_amount    bigint       default 0  not null,
+    proposer_slashing_amount bigint       default 0  not null,
+    attester_slashing_amount bigint       default 0  not null
+);
+
+create table if not exists t_chain_reorg
+(
+    id                       bigint auto_increment
+        primary key,
+    project_id               varchar(255) default '' not null,
+    created_at               datetime                not null,
+    updated_at               datetime                not null,
+    epoch                    bigint       default 0  not null,
+    slot                     bigint       default 0  not null,
+    depth                    int          default 0  not null,
+    old_block_slot           bigint       default 0  not null,
+    new_block_slot           bigint       default 0  not null,
+    old_block_proposer_index bigint       default 0  not null,
+    new_block_proposer_index bigint       default 0  not null,
+    old_head_state           varchar(255) default '' not null,
+    new_head_state           varchar(255) default '' not null
+);
+
+create table if not exists t_strategy
+(
+    id                     bigint auto_increment
+        primary key,
+    project_id             varchar(255)  default '' not null,
+    created_at             datetime                 not null,
+    updated_at             datetime                 not null,
+    uuid                   varchar(255)  default '' not null,
+    category               varchar(100)  default '' not null,
+    content                varchar(4096) default '' not null,
+    min_epoch              bigint        default 0  not null,
+    max_epoch              bigint        default 0  not null,
+    is_end                 tinyint(1)    default 0  not null,
+    reorg_count            int           default 0  not null,
+    impact_validator_count int           default 0  not null,
+    honest_lose_rate_avg   double        default 0  not null,
+    attacker_lose_rate_avg double        default 0  not null
 );
 ```

@@ -2,8 +2,6 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    // baseURL: 'http://127.0.0.1:8088/bfapi/v1',
-    // baseURL: 'https://bfplay.bitheart.org/bfapi/v1',
     baseURL: `${window.location.origin}/bfapi/v1`,
     headers: {
         'Content-Type': 'application/json',

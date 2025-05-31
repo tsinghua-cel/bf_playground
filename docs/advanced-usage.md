@@ -4,6 +4,14 @@ This section will introduce how to add new attack strategy in `Bunnyfinder` and 
 
 ## Create Custom Strategies
 To define a custom attack strategy, follow these steps:
+##### Fork the Repository
+[Fork](https://github.com/tsinghua-cel/attacker-service/fork) the `Bunnyfinder` repository on GitHub to your own account.
+
+And clone the forked repository to your local machine:
+```bash
+$ git clone https://github.com/[your-own-account]/attacker-service.git bunnyfinder
+```
+
 ##### Change the Directory
 Move to the `bunnyfinder/library` directory:
 ```bash
@@ -16,6 +24,7 @@ For example, duplicate the `withholding` strategy and rename it:
 $ cp -r library/withholding library/mystrategy
 $ mv library/mystrategy/withholding.go library/mystrategy/mystrategy.go
 ```
+
 ##### Modify the Strategy
 Make the following updates in the `library/mystrategy` directory:
 - Update package declarations: change the first line in `mystrategy.go`, `check.go`, and `block.go` files from "package withholding" to "package mystrategy".
@@ -101,7 +110,8 @@ And then, you can configure to run the test with new strategy.
 ```yaml
   image: 'bunnyfinder:latest'
   strategy: 'mystrategy'
-  dbconnect: 'eth:12345678@tcp(127.0.0.1:3306)/eth'
-  max_malicious_idx: "85"
-  duration_per_strategy: "30"
+  ...
 ```
+
+##### Contribute your strategy
+After testing, you can create a pull request to the original repository to contribute your strategy.
